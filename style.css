@@ -1,0 +1,35 @@
+h1 {
+    text-align: center;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+.search-container {
+
+}
+
+.select-track {
+
+}
+
+.track-list {
+
+}
+
+.track {
+    display: flex;
+}
+
+.cover-image {
+
+}
+
+.track-details {
+
+}
+
+.playAudio {
+
+}
