@@ -1,15 +1,12 @@
 
 // fetches data from iTunes API and returns it (using variable 'searchText')
 function searchLibrary(searchText) {
-    return fetch(`https://itunes-api-proxy.glitch.me/search?${searchText}&entity=song&media=music`)
+    return fetch(`https://itunes-api-proxy.glitch.me/search?term=${searchText}&media=music&entity=song`)
         .then(function (response) {
             if (!response.ok) {
                 throw Error(response.statusText)
             }
             return response.json()
-            // .then(function (data) {
-            //     console.log(data)
-            //  })
         })
 }
 
@@ -46,11 +43,6 @@ function showSongs(searchText) {
                 let songName = data.results[index].trackName
                 let coverImage = data.results[index].artworkUrl100
                 let audioURL = data.results[index].previewUrl
-                // convert milliseconds to minutes and seconds
-                let milliSec = data.results[index].trackTimeMillis
-                let minutes = Math.floor(milliSec / 60000)
-                let seconds = ((milliSec % 60000) / 1000).toFixed(0)
-                let trackLength = minutes + ":" + (seconds < 10 ? '0' : '') + seconds
 
                 // play audio
                 let trackAudio = new Audio(audioURL)
@@ -65,7 +57,7 @@ function showSongs(searchText) {
                     </audio>`
 
                 // puts data into divs
-                trackInfo.innerHTML = `<ul><li><strong>Artist: ${artistName}</strong></li><li>Album: ${album}</li><li>Track: ${songName}</li></ul>`
+                trackInfo.innerHTML = `<ul class="unstyled"><li><strong>Artist: ${artistName}</strong></li><li>Album: ${album}</li><li>Track: ${songName}</li></ul>`
                 albumCover.innerHTML = `<img src="${coverImage}">`
 
                 // update the new track
@@ -90,9 +82,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // event.preventDefault prevents page from refreshing
     userSearch.addEventListener('change', function (event) {
         event.preventDefault()
-        let searchText = 'term='
         // adds user term= to user input and encodes for url
-        searchText += encodeURIComponent(userSearch.value)
+        let searchText = encodeURIComponent(userSearch.value)
         console.log(searchText)
         // clears the search
         userSearch.value = ''

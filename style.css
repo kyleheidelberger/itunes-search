@@ -1,35 +1,70 @@
-h1 {
+header {
     text-align: center;
+    background: blue;
+    padding: 1em;
+    color: white;
+    display: flex;
 }
 
 body {
     font-family: sans-serif;
 }
 
-.search-container {
-
+div {
+    border: 1px black;
+}
+.grid {
+    display: grid;
+    grid-template-columns: 1000px 100px 100px;
+    grid-template-rows: 1000px 100px 100px;
+    grid-column-gap: 1px;
+    grid-row-gap: 1px;
 }
 
-.select-track {
 
+.search-container {
+    margin: 2em;
+    padding: 3px;
+    background: linear-gradient(21deg, #10abff, #1beabd);
+    border-radius: 9999em;
+    display: inline-block;
+}
+
+#artist-search {
+    font-size: 2em;
+    position: relative;
+    display: inherit;
+    border-radius: inherit;
+    margin: 0;
+    border: none;
+    outline: none;
+    padding: 0 .325em;
+    z-index: 1;
+}
+
+/* .select-track {
 }
 
 .track-list {
 
-}
+} */
 
 .track {
     display: flex;
+    justify-content: center;
 }
 
-.cover-image {
-
+.unstyled {
+    list-style: none;
 }
 
-.track-details {
+/* .cover-image {
 
-}
+} */
 
-.playAudio {
+/* .track-details {
+} */
 
-}
+/* .playAudio {
+
+} */
