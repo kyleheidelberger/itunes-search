@@ -1,14 +1,17 @@
 
 // fetches data from iTunes API and returns it (using variable 'searchText')
 function searchLibrary(searchText) {
-    return fetch(`https://itunes-api-proxy.glitch.me/search?term=${searchText}&media=music&entity=song`)
+    return fetch(`https://itunes-api-proxy.glitch.me/search?term=${searchText}&entity=song`)
         .then(function (response) {
             if (!response.ok) {
                 throw Error(response.statusText)
             }
             return response.json()
+
         })
 }
+
+const audioPlayer = document.querySelector('.player')
 
 // display results of search
 function showSongs(searchText) {
@@ -29,13 +32,14 @@ function showSongs(searchText) {
                 //then creates separate div elements inside track div for info and cover img
                 const trackInfo = document.createElement('div')
                 const albumCover = document.createElement('div')
-                const playAudio = document.createElement('div')
+                const playButton = document.createElement('div')
+                // const playAudio = document.createElement('div')
 
                 // add classes to divs
-                track.classList.add('track')
-                trackInfo.classList.add('track-details')
-                albumCover.classList.add('cover-image')
-                playAudio.classList.add('playAudio')
+                track.classList.add('track', 'container')
+                trackInfo.classList.add('track-details', 'container')
+                albumCover.classList.add('cover-image', 'container')
+                // playAudio.classList.add('playAudio')
 
                 // assigns data from fetch results to variables:
                 let artistName = data.results[index].artistName
@@ -45,27 +49,39 @@ function showSongs(searchText) {
                 let audioURL = data.results[index].previewUrl
 
                 // play audio
-                let trackAudio = new Audio(audioURL)
-                playAudio.addEventListener('click', function () {
-                    trackAudio.play()
-                })
-                playAudio.innerHTML =
-                    `<audio controls="controls">
-                        <source src="${audioURL}" type="audio/ogg" />
-                        <source src="${audioURL}" type="audio/mpeg" />
-                        <p>Your browser does not support playing audio tracks.</p>
-                    </audio>`
+                // let trackAudio = new Audio(audioURL)
+                // playAudio.addEventListener('click', function () {
+                //     trackAudio.play()
+                // })
+                // playAudio.innerHTML =
+                //     `<audio controls="controls">
+                //         <source src="${audioURL}" type="audio/ogg" />
+                //         <source src="${audioURL}" type="audio/mpeg" />
+                //         <p>Your browser does not support playing audio tracks.</p>
+                //     </audio>`
 
                 // puts data into divs
-                trackInfo.innerHTML = `<ul class="unstyled"><li><strong>Artist: ${artistName}</strong></li><li>Album: ${album}</li><li>Track: ${songName}</li></ul>`
+                trackInfo.innerHTML = `<ul class="unstyled"><li>${songName}</li><li><strong>${artistName}</strong></li><li><em>${album}</em></li></ul>`
                 albumCover.innerHTML = `<img src="${coverImage}">`
+                playButton.innerHTML = `<button class='play-button container' value="${audioURL}"></button>`
 
                 // update the new track
-                track.append(albumCover, trackInfo, playAudio)
+                track.append(albumCover, trackInfo, playButton) /*, playAudio)*/
                 // update track list with new track
                 trackList.append(track)
 
+
             }
+
+
+            const playButtons = document.querySelectorAll('.play-button')
+            for (let button of playButtons) {
+                button.addEventListener('click', function () {
+                    audioPlayer.src = button.value
+                    audioPlayer.autoplay = true
+                })
+            }
+
 
 
         })

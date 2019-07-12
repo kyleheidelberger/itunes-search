@@ -19,17 +19,19 @@
     <main>
         <div class="search-container">
             <!-- <form id="search-form"> -->
-            <input type="text" size="40px" id="artist-search" placeholder="Search for an artist..." name="search"
+            <input class="input-lg" type="text" size="50" id="artist-search" placeholder="Search for an artist..." name="search"
                 aria-label="Search for an artist in the iTunes Library">
             <!-- <button type="submit">Search</button> -->
             <!-- </form> -->
         </div>
 
-        <div class="player">
-            
+        <div class="audio-player container">
+                <audio class="player" controls>
+                        <p>Your browser does not support playing audio tracks.</p>
+                    </audio>`
         </div>
     
-        <div class="select-track">
+        <div class="select-track container">
             <div id="track-list"></div>
         </div>
     </main>

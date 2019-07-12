@@ -8,18 +8,19 @@ header {
 
 body {
     font-family: sans-serif;
+    margin: 0 auto;
 }
 
 div {
     border: 1px black;
 }
-.grid {
+/* .grid {
     display: grid;
     grid-template-columns: 1000px 100px 100px;
     grid-template-rows: 1000px 100px 100px;
     grid-column-gap: 1px;
     grid-row-gap: 1px;
-}
+} */
 
 
 .search-container {
@@ -28,6 +29,13 @@ div {
     background: linear-gradient(21deg, #10abff, #1beabd);
     border-radius: 9999em;
     display: inline-block;
+}
+
+.audio-player {
+    display: flex;
+    justify-content: center;
+    border: 3px red solid; /* for testing */
+
 }
 
 #artist-search {
@@ -42,29 +50,42 @@ div {
     z-index: 1;
 }
 
-/* .select-track {
+.select-track {
+    border: 3px pink solid; /* for testing */
+
 }
 
 .track-list {
-
-} */
+    border: 3px purple solid; /* for testing */
+  
+}
 
 .track {
-    display: flex;
-    justify-content: center;
+    display: inline-block;
+    width: 300px;
+    margin: 30px;
+    border: 3px blue solid; /* for testing */
 }
 
 .unstyled {
     list-style: none;
+    border: 3px yellow solid; /* for testing */
+
 }
 
-/* .cover-image {
+.cover-image {
+    border: 3px orange solid; /* for testing */
+}
 
-} */
+.track-details {
+    border: 3px green solid; /* for testing */
 
-/* .track-details {
-} */
+}
 
-/* .playAudio {
-
-} */
+.play-button {
+    box-sizing: border-box;
+    width: 74px;
+    height: 74px;
+    border-width: 37px 0px 37px 74px;
+    border-color: transparent transparent transparent #202020;
+}
