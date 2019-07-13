@@ -1,9 +1,65 @@
+/* code for video background from https://startbootstrap.com/snippets/video-header/ */
 header {
-    text-align: center;
-    background: blue;
-    padding: 1em;
-    color: white;
+position: relative;
+background-color: black;
+height: 75vh;
+min-height: 25rem;
+width: 100%;
+overflow: hidden;
+}
+
+header video {
+position: absolute;
+top: 50%;
+left: 50%;
+min-width: 100%;
+min-height: 100%;
+width: auto;
+height: auto;
+z-index: 0;
+-ms-transform: translateX(-50%) translateY(-50%);
+-moz-transform: translateX(-50%) translateY(-50%);
+-webkit-transform: translateX(-50%) translateY(-50%);
+transform: translateX(-50%) translateY(-50%);
+}
+
+header .container {
+position: relative;
+z-index: 2;
+}
+
+header .overlay {
+position: absolute;
+top: 0;
+left: 0;
+height: 100%;
+width: 100%;
+background-color: black;
+opacity: 0.5;
+z-index: 1;
+}
+
+@media (pointer: coarse) and (hover: none) {
+header {
+background: url('https://source.unsplash.com/XT5OInaElMw/1600x900') black no-repeat center center scroll;
+}
+header video {
+display: none;
+}
+}
+
+/* code for fixed transparent navbar with audio player */
+
+ .navbar {
+    /* z-index: 202020; */
+}
+
+.audio-player {
     display: flex;
+    justify-content: center;
+    margin-top: 1.5em;
+    /* border: 3px red solid; for testing */
+
 }
 
 body {
@@ -29,13 +85,8 @@ div {
     background: linear-gradient(21deg, #10abff, #1beabd);
     border-radius: 9999em;
     display: inline-block;
-}
-
-.audio-player {
-    display: flex;
-    justify-content: center;
-    border: 3px red solid; /* for testing */
-
+    position: absolute;
+    left: 25%;
 }
 
 #artist-search {
@@ -43,49 +94,64 @@ div {
     position: relative;
     display: inherit;
     border-radius: inherit;
-    margin: 0;
+    margin: 0 auto;
     border: none;
     outline: none;
     padding: 0 .325em;
     z-index: 1;
 }
 
+
+
 .select-track {
-    border: 3px pink solid; /* for testing */
+    /* border: 3px pink solid; for testing */
 
 }
 
-.track-list {
-    border: 3px purple solid; /* for testing */
-  
+#track-list {
+    /* border: 3px purple solid; for testing  */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .track {
     display: inline-block;
-    width: 300px;
-    margin: 30px;
-    border: 3px blue solid; /* for testing */
+    width: 20em;
+    height: 20em;
+    margin: 1.5em;
+    padding: 1em;
+    border: 3px  rgb(16, 171, 255) solid;
+    border-radius: 2em;
 }
 
 .unstyled {
     list-style: none;
-    border: 3px yellow solid; /* for testing */
+    /* border: 3px yellow solid; for testing */
 
 }
 
-.cover-image {
-    border: 3px orange solid; /* for testing */
+.cover-image-div {
+    text-align: center;
+    /* border: 3px orange solid; for testing */
+}
+
+.coverArt {
+    box-shadow: 4px 4px 4px rgba(26, 25, 25, 0.89);
+    margin: 1em;
 }
 
 .track-details {
-    border: 3px green solid; /* for testing */
+    /* border: 3px green solid; for testing */
+    margin: 5px;
+}
 
+.button-div {
+    text-align: center;
+    /* border: 3px skyblue solid; for testing */
 }
 
 .play-button {
-    box-sizing: border-box;
-    width: 74px;
-    height: 74px;
-    border-width: 37px 0px 37px 74px;
-    border-color: transparent transparent transparent #202020;
+    border-radius: 1em;
+    
 }

@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <script src="main.js" defer></script>
     <title>iTunes Search</title>
@@ -13,24 +14,44 @@
 
 <body>
     <header>
-        iTunes Song Search
+        <nav class="navbar fixed-top navbar-light bg-transparent">
+            <a class="navbar-brand" href="#">iTunes Search</a>
+            <div class="audio-player">
+                <audio class="player" controls>
+                    <p>Your browser does not support playing audio tracks.</p>
+                </audio>
+            </div>
+
+        </nav>
+        <div class="overlay"></div>
+        <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+            <source
+                src="https://gcs-vimeo.akamaized.net/exp=1563044392~acl=%2A%2F1228097952.mp4%2A~hmac=c0d3008e9ffa2fbe478e867b06c2bac140ccc36868ba075cd94c2688a86b3b8d/vimeo-prod-skyfire-std-us/01/3436/12/317182818/1228097952.mp4"
+                type="video/mp4">
+        </video>
+        <div class="container h-100">
+            <div class="d-flex h-100 text-center align-items-center">
+                <div class="search-container">
+                    <!-- <form id="search-form"> -->
+                    <input class="input-lg" type="text" size="30" id="artist-search"
+                        placeholder="Search for an artist..." name="search"
+                        aria-label="Search for an artist in the iTunes Library">
+                    <!-- <button type="submit">Search</button> -->
+                    <!-- </form> -->
+                </div>
+                <!-- <div class="w-100 text-white">
+                    <h1 class="display-3">iTunes Song Preview Search</h1>
+                    <p class="lead mb-0">by Kyle</p>
+                </div> -->
+            </div>
+        </div>
     </header>
 
     <main>
-        <div class="search-container">
-            <!-- <form id="search-form"> -->
-            <input class="input-lg" type="text" size="50" id="artist-search" placeholder="Search for an artist..." name="search"
-                aria-label="Search for an artist in the iTunes Library">
-            <!-- <button type="submit">Search</button> -->
-            <!-- </form> -->
-        </div>
 
-        <div class="audio-player container">
-                <audio class="player" controls>
-                        <p>Your browser does not support playing audio tracks.</p>
-                    </audio>`
-        </div>
-    
+
+
+
         <div class="select-track container">
             <div id="track-list"></div>
         </div>

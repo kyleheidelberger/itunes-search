@@ -36,9 +36,10 @@ function showSongs(searchText) {
                 // const playAudio = document.createElement('div')
 
                 // add classes to divs
-                track.classList.add('track', 'container')
+                track.classList.add('track')
                 trackInfo.classList.add('track-details', 'container')
-                albumCover.classList.add('cover-image', 'container')
+                albumCover.classList.add('cover-image-div', 'container')
+                playButton.classList.add('button-div')
                 // playAudio.classList.add('playAudio')
 
                 // assigns data from fetch results to variables:
@@ -62,17 +63,18 @@ function showSongs(searchText) {
 
                 // puts data into divs
                 trackInfo.innerHTML = `<ul class="unstyled"><li>${songName}</li><li><strong>${artistName}</strong></li><li><em>${album}</em></li></ul>`
-                albumCover.innerHTML = `<img src="${coverImage}">`
-                playButton.innerHTML = `<button class='play-button container' value="${audioURL}"></button>`
+                albumCover.innerHTML = `<img class="coverArt" src="${coverImage}">`
+                playButton.innerHTML = `<button class='play-button btn btn-primary' value="${audioURL}">Play Song Preview</button>`
 
                 // update the new track
                 track.append(albumCover, trackInfo, playButton) /*, playAudio)*/
                 // update track list with new track
                 trackList.append(track)
+                
 
 
             }
-
+            console.log(trackList)
 
             const playButtons = document.querySelectorAll('.play-button')
             for (let button of playButtons) {
