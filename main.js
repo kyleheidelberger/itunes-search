@@ -44,7 +44,7 @@ function searchLibrary(searchText) {
 }
 
 const audioPlayer = document.querySelector('.player')
-const nowPlaying = document.querySelector('.now-playing')
+// const nowPlaying = document.querySelector('.now-playing')
 
 // display results of search
 function showSongs(searchText) {
@@ -91,8 +91,6 @@ function showSongs(searchText) {
                 // update track list with new track
                 trackList.append(track)
 
-
-
             }
 
             const playButtons = document.querySelectorAll('.play-button')
@@ -100,7 +98,7 @@ function showSongs(searchText) {
                 button.addEventListener('click', function () {
                     audioPlayer.src = button.value
                     audioPlayer.autoplay = true
-                    nowPlaying.append(`Now Playing: ${artistName} - ${songName}`)
+                    // nowPlaying.innerHTML = `Now Playing: a song`
 
                 })
             }
