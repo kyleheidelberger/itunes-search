@@ -16,7 +16,8 @@
     <header>
         <nav class="navbar fixed-top navbar-dark bg-transparent">
             <a class="navbar-brand" href="#">iTunes Search</a>
-            <div class="audio-player">
+            <div class="now-playing"></div>
+            <div class="audio-player-div">
                 <audio class="player" controls>
                     <p>Your browser does not support playing audio tracks.</p>
                 </audio>
@@ -29,29 +30,39 @@
                 src="https://firebasestorage.googleapis.com/v0/b/itunes-search-bf6f1.appspot.com/o/Neon%20-%2021368.mp4?alt=media&token=d088b93a-b8f8-4c59-a02b-3735f3ed78fa"
                 type="video/mp4">
         </video>
-        <div class="container h-100">
-            <div class="d-flex h-100 text-center align-items-center">
-                <div class="search-container">
-                    <!-- <form id="search-form"> -->
-                    <input class="input-lg" type="text" size="30" id="artist-search"
-                        placeholder="Search for an artist..." name="search"
-                        aria-label="Search for an artist in the iTunes Library">
-                    <!-- <button type="submit">Search</button> -->
-                    <!-- </form> -->
-                </div>
-                <!-- <div class="w-100 text-white">
+        <!-- <div class="container h-100"> -->
+        <div class="d-flex flex-column-reverse h-100 text-center align-items-center">
+            <div id="filter" class="btn-group">
+                <label class="btn btn-info active">
+                    <input type="radio" name="options" id="option1" autocomplete="off" value="all" checked> All
+                </label>
+                <label class="btn btn-info active">
+                    <input type="radio" name="options" id="option2" autocomplete="off" value="artist"> Artists
+                </label>
+                <label class="btn btn-info active">
+                    <input type="radio" name="options" id="option3" autocomplete="off" value="song"> Songs
+                </label>
+                <label class="btn btn-info active">
+                    <input type="radio" name="options" id="option4" autocomplete="off" value="album"> Albums
+                </label>
+            </div>
+            <div class="search-container">
+                <!-- <form id="search-form"> -->
+                <input class="input-lg size=" 30" type="text" id="artist-search" placeholder="Search..." name="search"
+                    aria-label="Search for an artist in the iTunes Library">
+                <!-- <button type="submit">Search</button> -->
+                <!-- </form> -->
+            </div>
+            <!-- <div class="w-100 text-white">
                     <h1 class="display-3">iTunes Song Preview Search</h1>
                     <p class="lead mb-0">by Kyle</p>
                 </div> -->
-            </div>
         </div>
+        <!-- </div> -->
     </header>
 
     <main>
-
-
-
-
+        
         <div class="select-track container">
             <div id="track-list"></div>
         </div>

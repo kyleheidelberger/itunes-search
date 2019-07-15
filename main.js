@@ -1,17 +1,50 @@
 
 // fetches data from iTunes API and returns it (using variable 'searchText')
 function searchLibrary(searchText) {
-    return fetch(`https://itunes-api-proxy.glitch.me/search?term=${searchText}&entity=song`)
-        .then(function (response) {
-            if (!response.ok) {
-                throw Error(response.statusText)
-            }
-            return response.json()
+    if (document.querySelector('input[name="options"]:checked').value == 'all') {
+        return fetch(`https://itunes-api-proxy.glitch.me/search?term=${searchText}&entity=song`)
+            .then(function (response) {
+                if (!response.ok) {
+                    throw Error(response.statusText)
+                }
+                return response.json()
 
-        })
+            })
+    }
+    else if (document.querySelector('input[name="options"]:checked').value == 'artist') {
+        return fetch(`https://itunes-api-proxy.glitch.me/search?term=${searchText}&entity=song&attribute=artistTerm`)
+            .then(function (response) {
+                if (!response.ok) {
+                    throw Error(response.statusText)
+                }
+                return response.json()
+
+            })
+    }
+    else if (document.querySelector('input[name="options"]:checked').value == 'song') {
+        return fetch(`https://itunes-api-proxy.glitch.me/search?term=${searchText}&entity=song&attribute=songTerm`)
+            .then(function (response) {
+                if (!response.ok) {
+                    throw Error(response.statusText)
+                }
+                return response.json()
+
+            })
+    }
+    else if (document.querySelector('input[name="options"]:checked').value == 'album') {
+        return fetch(`https://itunes-api-proxy.glitch.me/search?term=${searchText}&entity=song&attribute=albumTerm`)
+            .then(function (response) {
+                if (!response.ok) {
+                    throw Error(response.statusText)
+                }
+                return response.json()
+
+            })
+    }
 }
 
 const audioPlayer = document.querySelector('.player')
+const nowPlaying = document.querySelector('.now-playing')
 
 // display results of search
 function showSongs(searchText) {
@@ -33,14 +66,12 @@ function showSongs(searchText) {
                 const trackInfo = document.createElement('div')
                 const albumCover = document.createElement('div')
                 const playButton = document.createElement('div')
-                // const playAudio = document.createElement('div')
 
                 // add classes to divs
                 track.classList.add('track')
                 trackInfo.classList.add('track-details', 'container')
                 albumCover.classList.add('cover-image-div', 'container')
                 playButton.classList.add('button-div')
-                // playAudio.classList.add('playAudio')
 
                 // assigns data from fetch results to variables:
                 let artistName = data.results[index].artistName
@@ -49,38 +80,28 @@ function showSongs(searchText) {
                 let coverImage = data.results[index].artworkUrl100
                 let audioURL = data.results[index].previewUrl
 
-                // play audio
-                // let trackAudio = new Audio(audioURL)
-                // playAudio.addEventListener('click', function () {
-                //     trackAudio.play()
-                // })
-                // playAudio.innerHTML =
-                //     `<audio controls="controls">
-                //         <source src="${audioURL}" type="audio/ogg" />
-                //         <source src="${audioURL}" type="audio/mpeg" />
-                //         <p>Your browser does not support playing audio tracks.</p>
-                //     </audio>`
 
                 // puts data into divs
                 trackInfo.innerHTML = `<ul class="unstyled"><li>${songName}</li><li><strong>${artistName}</strong></li><li><em>${album}</em></li></ul>`
                 albumCover.innerHTML = `<img class="coverArt" src="${coverImage}">`
-                playButton.innerHTML = `<button class='play-button btn btn-primary' value="${audioURL}">Play Song Preview</button>`
+                playButton.innerHTML = `<button class='play-button btn btn-info' value="${audioURL}">Play Song Preview</button>`
 
                 // update the new track
-                track.append(albumCover, trackInfo, playButton) /*, playAudio)*/
+                track.append(albumCover, trackInfo, playButton)
                 // update track list with new track
                 trackList.append(track)
-                
+
 
 
             }
-            console.log(trackList)
 
             const playButtons = document.querySelectorAll('.play-button')
             for (let button of playButtons) {
                 button.addEventListener('click', function () {
                     audioPlayer.src = button.value
                     audioPlayer.autoplay = true
+                    nowPlaying.append(`Now Playing: ${artistName} - ${songName}`)
+
                 })
             }
 

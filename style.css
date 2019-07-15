@@ -2,7 +2,7 @@
 header {
 position: relative;
 background-color: black;
-height: 75vh;
+height: 100vh;
 min-height: 25rem;
 width: 100%;
 overflow: hidden;
@@ -48,54 +48,39 @@ display: none;
 }
 }
 
-/* code for fixed transparent navbar with audio player */
 
- .navbar {
-    /* z-index: 202020; */
-}
 
-.audio-player {
-    display: flex;
-    justify-content: center;
-    margin-top: 1.5em;
-    /* border: 3px red solid; for testing */
 
-}
 
 body {
     font-family: sans-serif;
+    color: white;
     margin: 0 auto;
+    background-color: rgb(48, 47, 108);
 }
 
-div {
-    border: 1px black;
-}
-/* .grid {
-    display: grid;
-    grid-template-columns: 1000px 100px 100px;
-    grid-template-rows: 1000px 100px 100px;
-    grid-column-gap: 1px;
-    grid-row-gap: 1px;
-} */
 
+#filter {
+    margin-bottom: 2em;
+}
 
 .search-container {
-    margin: 2em;
+    margin: 1em;
     padding: 3px;
-    background: linear-gradient(21deg, #10abff, #1beabd);
-    border-radius: 9999em;
-    display: inline-block;
-    position: absolute;
-    left: 25%;
+    /* background: linear-gradient(21deg, #10abff, #1beabd); */
+    /* border-radius: 9999em; */
+    /* display: inline-block; */
+    /* position: absolute; */
+    /* left: 25%;  */
 }
 
 #artist-search {
     font-size: 2em;
     position: relative;
-    display: inherit;
-    border-radius: inherit;
+    display: inline-block;
+    border-radius: 9999em;
     margin: 0 auto;
-    border: none;
+    border: 2px rgba(215, 75, 98, 0.824) solid;
     outline: none;
     padding: 0 .325em;
     z-index: 1;
@@ -104,7 +89,6 @@ div {
 
 
 .select-track {
-    /* border: 3px pink solid; for testing */
 
 }
 
@@ -113,6 +97,7 @@ div {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    padding-top: 2em;
 }
 
 .track {
@@ -121,7 +106,7 @@ div {
     height: 20em;
     margin: 1.5em;
     padding: 1em;
-    border: 3px  rgb(16, 171, 255) solid;
+    border: 3px  rgb(51, 134, 169) solid;
     border-radius: 2em;
 }
 
